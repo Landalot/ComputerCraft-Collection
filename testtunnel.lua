@@ -2,18 +2,27 @@ local cycles = ...
 
 function breakcycle()
 
-    turtle.dig()
-    turtle.up()
-    turtle.dig()
-    turtle.up()
+    local height = 3
+
+    for i = 2, height, 1 do
+        
+        turtle.dig()
+        turtle.up()
+
+    end
+    
     turtle.dig()
     turtle.turnRight()
     turtle.forward()
     turtle.turnLeft()
-    turtle.dig()
-    turtle.down()
-    turtle.dig()
-    turtle.down()
+
+    for i = 2, height, 1 do
+        
+        turtle.dig()
+        turtle.down()
+
+    end
+
     turtle.dig()
     turtle.turnLeft()
     turtle.forward()
