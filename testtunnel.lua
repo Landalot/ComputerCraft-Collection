@@ -1,27 +1,41 @@
 local cycles = ...
 
-function breakcycle()
+function breakLine(lHeight, breakUpwards)
+
+    if (breakUpwards == true) then
+
+        for i = 2, lHeight, 1 do
+        
+            turtle.dig()
+            turtle.up()
+    
+        end
+
+    else
+
+        for i = 2, lHeight, 1 do
+        
+            turtle.dig()
+            turtle.down()
+    
+        end
+        
+    end
+
+end
+
+function breakCycle()
 
     local height = 3
 
-    for i = 2, height, 1 do
-        
-        turtle.dig()
-        turtle.up()
-
-    end
+    breakLine(height,true)
     
     turtle.dig()
     turtle.turnRight()
     turtle.forward()
     turtle.turnLeft()
 
-    for i = 2, height, 1 do
-        
-        turtle.dig()
-        turtle.down()
-
-    end
+    breakLine(height,false)
 
     turtle.dig()
     turtle.turnLeft()
@@ -39,6 +53,6 @@ end
 
 for i  = 1,cycles,1 do
 
-    breakcycle()  
+    breakCycle()  
      
 end
