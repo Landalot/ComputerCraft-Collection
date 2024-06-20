@@ -1,10 +1,12 @@
 local cycles = ...
 
-function breakLine(lHeight, breakUpwards)
+local height = 3
+
+function breakLine(breakUpwards)
 
     if (breakUpwards == true) then
 
-        for i = 2, lHeight, 1 do
+        for i = 2, height, 1 do
         
             turtle.dig()
             turtle.up()
@@ -13,7 +15,7 @@ function breakLine(lHeight, breakUpwards)
 
     else
 
-        for i = 2, lHeight, 1 do
+        for i = 2, height, 1 do
         
             turtle.dig()
             turtle.down()
@@ -28,15 +30,13 @@ end
 
 function breakCycle()
 
-    local height = 3
-
-    breakLine(height,true)
+    breakLine(true)
     
     turtle.turnRight()
     turtle.forward()
     turtle.turnLeft()
 
-    breakLine(height,false)
+    breakLine(false)
 
     turtle.turnLeft()
     turtle.forward()
