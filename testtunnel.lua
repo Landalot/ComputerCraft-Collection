@@ -19,8 +19,10 @@ function breakLine(lHeight, breakUpwards)
             turtle.down()
     
         end
-        
+
     end
+
+    turtle.dig()
 
 end
 
@@ -30,14 +32,12 @@ function breakCycle()
 
     breakLine(height,true)
     
-    turtle.dig()
     turtle.turnRight()
     turtle.forward()
     turtle.turnLeft()
 
     breakLine(height,false)
 
-    turtle.dig()
     turtle.turnLeft()
     turtle.forward()
     turtle.turnRight()
