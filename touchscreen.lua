@@ -9,6 +9,11 @@ end
 local count = 0
 local exitTrigger = 0
 
+local function update()
+    writeAt(1,1, count)
+    count = count + 1
+end
+
 local function touch()
     _, side, x, y = os.pullEvent("monitor_touch")
 
@@ -19,18 +24,16 @@ local function touch()
     end
 
     writeAt(x,y, "Beans")
-    writeAt(1,1, count)
-    count = count + 1
+    update()
 end
 
-local function sleepAndCount()
+local function sleepAndUpdate()
     sleep(1)
-    writeAt(1,1, count)
-    count = count + 1
+    update()
 end
 
 while true do
-    parallel.waitForAny(touch, sleepAndCount)
+    parallel.waitForAny(touch, sleepAndUpdate)
     if exitTrigger == 1 then
         monitor.clear()
         break
