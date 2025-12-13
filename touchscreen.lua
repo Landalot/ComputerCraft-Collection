@@ -23,8 +23,14 @@ local function touch()
     count = count + 1
 end
 
+local function sleepAndCount()
+    sleep(1)
+    writeAt(1,1, count)
+    count = count + 1
+end
+
 while true do
-    touch()
+    parallel.waitForAny(touch, sleepAndCount)
     if exitTrigger == 1 then
         monitor.clear()
         break
